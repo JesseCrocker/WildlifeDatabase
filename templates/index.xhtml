@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link tal:condition="false:mobile" rel="stylesheet" type="text/css" href="css/index.css" />
+    <link tal:condition="true:mobile" rel="stylesheet" type="text/css" href="css/index-mobile.css" />
+    <script tal:attributes="src gmap_url" type="text/javascript"></script>
+    <script src="js/mapfuncs.js" type="text/javascript" />
+    <script language="javascript">
+      var conf = new Object;
+      <foo tal:omit-tag="" tal:repeat="item each: $conf">
+	conf['<foo tal:replace="item/key" />'] = '<foo tal:replace="item/val" />';
+      </foo>
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29752779-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+     <meta tal:conditon="true:mobile" name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=1.0" />
+  </head>
+  <body onload="load()">
+    <div id="menu"> 
+      <form name="menu_form" id="menu_form">
+      <ul id="navigation-1" class="menu">
+	<li class="close"><a class="close" href="#" >Close <img src="/images/x.png" /></a></li>
+	<li id="report_sighting"><a href="sighting.pl" target="input_frame" onclick="openFrame()">Report Sighting</a></li>
+	<li class="wide" ><a href="#">Search</a>
+	  <ul class="navigation-2">
+		<li><input type="radio" name="choose_form"  checked="1"
+			   value="range_form" onclick="choose_search_form()" >Range of Dates</input></li>
+		<li><input type="radio" name="choose_form" 
+			   value="series_form" onclick="choose_search_form()">Species in Multiple Years</input></li>
+		<li><input type="radio" name="choose_form" 
+			   value="name_form" onclick="choose_search_form()">By Name</input></li>
+		<li><input type="radio" name="choose_form" 
+			   value="my_sightings" onclick="choose_search_form()" >My Report</input></li>
+
+	    <li class="my_sightings">Show new sightings</li>
+	    <li class="name_form">Name:<input type="text" name="username" size="20" />
+	    </li>
+	    <li class="range_form">
+		Date Range: <br />
+		<select name="r_startmonth">
+		  <option tal:repeat="month month_list" 
+			  tal:attributes="value month/number" 
+			  tal:content="month/name"></option>
+		</select>/<select name="r_startday">
+		  <option tal:repeat="date date_list" 
+			  tal:attributes="value date" 
+			  tal:content="date"></option>
+		</select>/<select name="r_startyear">
+		  <option tal:repeat="year year_list" tal:attributes="value year" tal:content="year"></option>
+		</select>
+		<br /> <span class="center">to</span><br />
+		<select name="r_endmonth">
+		  <option tal:repeat="month month_list" 
+			  tal:attributes="value month/number" 
+			  tal:content="month/name"></option>
+		</select>/<select name="r_endday">
+		  <option tal:repeat="date date_list" 
+			  tal:attributes="value date" 
+			  tal:content="date"></option>
+		</select>/<select name="r_endyear">
+		  <option tal:repeat="year year_list"
+			  tal:attributes="value year"
+			  tal:content="year"></option>
+		</select>
+	      </li>
+	      <li class="range_form">
+		Species:<br />
+		<select name="r_species" size="10" multiple="multiple">
+		  <option tal:repeat="species species_list"
+			  tal:attributes="value species"
+			  tal:content="species"></option>
+		</select>
+		<a href="javascript:selectAllSpecies()">Select All</a>
+	      </li>
+		<li class="range_form">
+		Activity: <select id="r_activity" name="r_activity">
+		  <option selected="selected" value=""></option>
+		  <option tal:repeat="activity activity_list"
+			  tal:attributes="value activity"
+			  tal:content="activity"></option>
+		</select>
+	    </li>
+	    <li class="series_form">
+		Date Range: <br />
+		<select name="s_startmonth">
+		  <option tal:repeat="month month_list" 
+			  tal:attributes="value month/number" 
+			  tal:content="month/name"></option>
+		</select> /
+		<select name="s_startday">
+		  <option tal:repeat="date date_list" 
+			  tal:attributes="value date" 
+			  tal:content="date"></option>
+		</select>
+		<br /> to <br />
+		<select name="s_endmonth">
+		  <option tal:repeat="month month_list" 
+			  tal:attributes="value month/number" 
+			  tal:content="month/name"></option>
+		</select> / 
+		<select name="s_endday">
+		  <option tal:repeat="date date_list" 
+			  tal:attributes="value date" 
+			  tal:content="date"></option>
+		</select>
+	      </li>
+	      <li class="series_form">
+	      Years: <br />
+		<select name="s_year" size="7" multiple="multiple">
+		  <option tal:repeat="year year_list"
+			  tal:attributes="value year"
+			  tal:content="year"></option>
+		</select>
+		</li>
+		<li class="series_form">
+		Species: <br />
+		<select name="s_species">
+		  <option tal:repeat="species species_list"
+			  tal:attributes="value species"
+			  tal:content="species"></option>
+		</select>
+	    </li>
+	  </ul>
+	</li>
+	<li>
+	    <a href="javascript:updateMap()">Update Map</a>
+	</li>
+	<li><a href="#">Map Options</a>
+	  <ul class="navigation-2">
+	      <li><a href="javascript:myClear()">Clear Map</a></li>
+	      <li><input type="checkbox" name="landmarks" value="on" checked="checked" />Show Landmarks</li>
+	      <li><input type="checkbox" name="parcels" value="on" />Show Private Property</li>
+	      <li><input type="checkbox" name="map" value="on" checked="checked" />Enable Map</li>
+	      <li><input type="checkbox" name="show_end" value="on" checked="checked" />Show End Locations</li>
+	      <li>Max sightings on map: <input type="text" name="map_max" size="3" tal:attributes="value conf/max_on_map" /></li>
+	      <li>Max sightings per query: <input type="text" name="limit" size="3" tal:attributes="value conf/max_per_query" /></li>
+	      <li>Show sightings within  <input type="text" name="centerdist" size="3" tal:attributes="value conf/sighting_distance"/>
+		miles of map center</li>
+	      <li>Data Layers:</li>
+	      <li tal:repeat="layer layers">
+		    <input tal:condition="true:layer/visible" type="checkbox" name="layers" class="layer" checked="checked"
+			   tal:attributes="value layer/url" tal:content="layer/name"></input>
+		    <input tal:condition="false:layer/visible" type="checkbox" name="layers" class="layer"
+			   tal:attributes="value layer/url" tal:content="layer/name"></input>
+	      </li>
+	  </ul>
+	</li>
+	<li><a href="#">Tools</a>
+	  <ul class="navigation-2">
+	   	<li class="close"><a href="#url">Close x</a></li>
+	    <li><a href="javascript:showReport()">View Report</a></li>
+	    <li><a href="distance.xhtml" target="input_frame" onclick="openFrame()">Measure Distance</a></li>
+	    <li><a href="javascript:viewInEarth()">View in Google Earth</a></li>
+	    <li><a href="q-landmark.pl?format=kml" target="_blank" >Landmarks in GE</a></li>
+	    <li><a href="javascript:parcelsInEarth()" >Private prop. in GE</a></li>
+	    <li><a href="habitat-usage-form.pl" target="input_frame" onclick="openFrame()">Habitat Use</a></li>
+	    <li><a href="stats.pl" target="input_frame" onclick="openFrame()">Stats</a></li>
+	    <li><a href="accountability.pl" target="input_frame" onclick="openFrame()">Accountability</a></li>
+	  </ul>
+	</li>
+	<li><a href="http://code.google.com/p/wildlife-database/wiki/Manual"  target="_blank">Help</a></li>
+	<li><a href="about.xhtml"  target="input_frame" onclick="openFrame()">About</a></li>
+	<li><a href="login.pl" target="input_frame" id="login_link" onclick="openFrame()">Login</a></li>
+	<li><a href="login.pl?logout=1" target="input_frame" id="logout_link" onclick="closeFrame()">Logout</a></li>
+	<li><a href="password.pl" target="input_frame" id="password_link" onclick="openFrame()">Change Password</a></li>
+	<li id="admin_menu"><a href="#">Admin</a>
+	  <ul class="navigation-2">
+	   	<li class="close"><a href="#url">Close x</a></li>
+	    <li><a href="user.pl" target="input_frame" onclick="openFrame()">Manage Users</a></li>
+	    <li><a href="config.pl" target="input_frame" onclick="openFrame()">Configuration</a></li>
+	    <li><a href="layers.pl" target="input_frame" onclick="openFrame()">Layers</a></li>
+	    <li><a href="landmark.pl" target="input_frame" onclick="openFrame()">Landmarks</a></li>
+	  </ul>
+	</li>
+      </ul>
+      </form>
+     </div>
+    <div id="mapdiv" />
+    <div id="loadingDiv">
+      Loading
+      <div id="progBar">
+	<div id="prog_filled_in" />
+      </div>
+    </div>
+    <div id="ll">
+      <div>
+	<form name="landmark_form" id="landmark_form">
+	  <select id="landmark_menu" name="landmark_menu" onchange="gotoLandmark()">
+	  </select>
+	</form>
+      </div>
+      <h1>Legend</h1>
+      <div id="legend"> </div>
+      <br />
+      <div id="layerLegend"> </div>
+    </div>
+    <iframe name="input_frame" id="input_frame" src="" /> 
+  </body>
+</html>

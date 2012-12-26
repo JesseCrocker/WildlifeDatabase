@@ -1,0 +1,5 @@
+<xml xmlns:tal="http://purl.org/petal/1.0/">
+<parcels>
+<parcel tal:repeat="parcel parcels" tal:attributes="owner_name parcel/data/owner_name; coord_string parcel/coord_string; center parcel/center; buffalo_friendly parcel/data/buffalo_friendly; cows parcel/data/cows; notes parcel/data/notes; ParcelID parcel/data/ParcelID"  />
+</parcels>
+</xml>

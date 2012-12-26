@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+    <script type="text/javascript">
+        function set_start_loc(latlon){
+            var ss = latlon.toString().match(/[\d\.\-]+/g)
+            document.inputform.latitude.value = ss[0];
+            document.inputform.longitude.value = ss[1];
+        }
+	function set_end_loc(latlon){
+	}
+    </script>
+  </head>
+  <body>
+    <div id='close'><a href="javascript:parent.closeFrame()">X</a></div>
+    <div id="form">
+      <h1>Habitat Use Report</h1>
+      <form id="inputform" name="inputform" action="habitat-usage.pl" target="_blank" method="post">
+        Species: 
+        <select name="species" multiple="multiple">
+            <option tal:repeat="species species_list"
+			  tal:attributes="value species"
+			  tal:content="species"></option>
+        </select>
+        <br />
+        Choose landmarks:
+        <select name="landmarks" multiple="multiple">
+            <option tal:repeat="landmark landmark_list"
+			  tal:attributes="value landmark/id"
+			  tal:content="landmark/name"></option>
+        </select>
+        <br />
+        Or select a Location: <input type="text" size="11" name="latitude" />,<input type="text" size="11" name="longitude" />
+        <br />
+        Include Sightings within <select name="distance">
+        <option value="0.05">.05</option>
+        <option value="0.1">0.1</option>
+        <option value="0.2">0.2</option>
+        <option value="0.25">0.25</option>
+        <option value="0.5">0.5</option>
+        <option value="0.75">0.75</option>
+        <option value="1.0">1</option>
+        <option value="1.5">1.5</option>
+        <option value="2.0">2</option>
+        <option value="3.0">3</option>
+        <option value="4.0">4</option>
+        <option value="5.0">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        </select>
+        <select name="distance_unit"><option values="miles">miles</option><option value="km">km</option></select> of location.
+        <br />
+        Group sightings by <select name="sort_key">
+            <option value="season">Season</option>
+            <option value="year">Year</option>
+            <option value="month">Month</option>
+        </select>
+        <br />
+        <input type="submit" value="View Report" />
+        <br />
+        <h3>Advanced Options</h3>
+        <br />
+        Activity
+        <select name="activity_op">
+            <option value="inc">including</option>
+            <option value="exc">excluding</option>
+        </select>
+        <select name="activity" multiple="multiple" size="10">
+            <option tal:repeat="activity activity_list"
+			  tal:attributes="value activity"
+			  tal:content="activity"></option>
+        </select>
+        <br />
+        Use unique count values for each day <input type="checkbox" name="unique_per_day" />
+        <br />
+        Draw Graphs <input type="checkbox" name="graph" checked="checked" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+#use this file to define date ranges that certain species will not be viewable for
+#we are using this to not give away locations of any species during a hunting season for that species
+#species:start month:start day:end month:end day
+bison:10:1:9:30
+elk:9:2:11:31
+moose:9:15:11:26
+mule deer:9:2:11:31
+white tail deer:9:2:11:31
+beaver:11:1:5:31
+river otter:11:1:4:15
+black bear:9:15:5:31

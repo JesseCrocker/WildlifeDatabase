@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Help</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+  </head>
+  <body>
+    <div id='close'><a href="javascript:parent.closeFrame()">X</a></div>
+    <div id='form'>
+      <p>
+      The Wildlife Database is divided into 3 parts:  The Menu at the top of the page, the map, and the bottom frame for inputing sightings and viewing other pages(such as this one).</p>
+    <h1>The Map</h1>
+    <p>The arrows in the upper left corner of the map are for panning the map, the + and - zoom the map.  You can also click and drag the map to pan.  If your mouse is equiped with a scroll wheel you can also use that to zoom the map.
+In the upper right corner there are buttons for viewing different map base layers.  The default base layer(called Map) shows roads and bodies of water.  The Satellite base layer displays satellite and aerial photos.  The Hybrid base layer overlays roads on the Satellite base layer.  The Topo base layer displays USGS topo maps, the scale of the topo maps is adjusted to fit the current zoom level.</p>
+    <p>Sightings are shown as pins on the map.  To view more
+information about a sighting click on a pin, this will bring up a
+window with all the information contained in the sighting.</p>
+<p>To the right of the map is the legend.  The legend is updated when the
+map changes to show all markers currently used on the map.  Below the legend is a menu for going to any of the landmarks on the map, in addition to putting the landmark in the center of the map, the location for adding new sightings is set to the landmark.</p>
+    <h1>The Menu</h1>
+    <h2>Search</h2>
+    <p>This menu is used for querying sightings to display on the map.  After the search form is filled out you must update the map to display the sightings.</p>
+    <h3>Search Type</h3>
+    <p>There are three options for search type, "Range of Dates &amp;
+      Species" is the default.</p>
+    <h4>Range of Dates</h4>
+    <p>This is the default form.  Select a range of dates, then select one or more
+      species(hold shift to select more than one species).  The activity
+      field is optional, if an activity is selected, only sightings with
+      that activity are shown.</p>
+    <h4>Species in Multiple Years</h4>
+    <p>
+      With this option you can view sightings for a single species in
+      different years.  First select a range of dates.  Then select one or more years(to select
+      multiple years hold shift while you click on the years).  Choose a
+      species, then update the map.  Each year is represented on the map by a different
+      color pin.</p>
+    <h4>My Sightings</h4>
+    <p>This option will display any new sightings that you have made this session.</p>
+    <h2>Map Control</h2>
+    <h3>Update Map</h3>
+    <p>This will update the map with any sightings and data layers you have selected</p>
+    <h3>Clear Map</h3>
+    <p>This will clear all data off of the map.  Updating the map will bring it back</p>
+    <h2>Map Options</h2>
+    <h3>Show Landmarks</h3>
+    <p>Turn this option off if you do not want to display the
+landmark pins on the map.</p>
+    <h3>Enable Map</h3>
+    <p>Uncheck this option if you do not want to render sightings
+on the map(you can still view the report).</p>
+    <h3>Max Sightings on map</h3>
+    <p>This options limits the number of sightings that are drawn
+on the map at once.  This is necesary because drawing to many
+sightings at once can cause computer to go very slow, or in some cases
+crash.  On a reasonably fast computer this number can safely be
+increased to 1000.  Sightings that are not drawn on the map will still
+apear in the report.</p>
+    <h3>Max sightings per species</h3>
+    <p>This limits the number of sightings for a single species(or
+in the case of the 'Species in Multiple Years' form for a single year)
+that are retrieved.  Sightings above the limit are NOT in the report.</p>
+    <h3>Show sightings within X miles of map center</h3>
+    <p>This option is mainly for performance purposes, showing
+sightings that are off of the screen slows things down.  It is also
+usefull for analyzing long term use of areas.</p>
+    <h3>Data Layers</h3>
+    <p>This will bring up another menu for choosing suplemental data layers to view on the map.  Data layers will not be shown untill the map is updated.</p>
+    <h2>More Info</h2>
+    <h3>View Report</h3>
+    <p>This will open up a new window containing a table of all of the sightings shown on the map.  Click on the the icons on the left side of the table will open up the selected sighting on the map.</p>
+    <h3>Habitat Usage</h3>
+    <p>This will bring up a page for analyzing usage of habitat.</p>
+    <h1>Adding Sightings</h1>
+    <p>
+To add a new sighting you must first login.  Click login in the menu,
+enter your username and password, then click login.  This
+    will bring you to the form for adding sightings.</p>
+    <p>First enter your full name in the name field.</p>
+    <p>Select the date for your
+    sighting(the default is today's date).  The next field is for
+    sighting time, this must entered in 24 hour(military) format(1:00
+    pm is 13:00).</p>
+    <p>Next, choose a location for your sighting, this can
+    be done by clicking on the map, or by choosing a location from the
+    landmark menu.  A green pin will be placed on the map
+    to mark the location.  To choose an ending location, click on the map again, or choose another location from the landmark menu.  The ending location is marked with a red pin.  If you wish to move either location after you selected in, you can drag the pin around the map.</p>
+    <p>Select a species, if the
+    species you are reporting is not in the list, select other and you will be given a text box to enter the species.  Make sure before choosing other that the species you want is not already in the last.  Any new species reported will be added to the list for use in reporting future sightings.</p>
+    <p>Select an activity, if
+    the activity is not in the list, select other and you will be given a text box to enter te activity.  Any new activity entered will be added to the list for future use.  If you could not determine the activity leave this
+    field blank.</p>
+    <p>The next line down is for entering the number of
+    animals sighted, enter the count in the field following the
+    appropriate label.  If you could not determine the age or sex of
+    some or all of the animals enter that count in the unknown
+    field.</p>
+    <p>If you have any additional comments, enter them in the notes field.</p>
+    <p>If you have a digital photo of the animal, click browse to select the
+    photo on your hard drive.  Photos must be in JPEG format.  All photos will be resized so that they fit on the map.</p>
+    <p>When you have filled in all the necessary fields, click
+    "add sighting".  This will bring you back to a blank form to
+    enter another sighting.  If your sighting was added successfully,
+    "sighting added" will appear in red at the top of the frame.</p>
+    </div>
+  </body>
+</html>

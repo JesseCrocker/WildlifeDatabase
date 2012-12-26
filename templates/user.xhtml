@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+  </head>
+  <body>
+    <div id='close'><a href="javascript:parent.closeFrame()">X</a></div>
+    <div id="notification" tal:content="notification"></div>
+    <div id="form">
+        <h3>Add User</h3>
+        <form id="inputform" name="inputform" action="user.pl" method="post">
+            <input type="hidden" name="action" value="new" />
+            <span class="required">Username:</span> <input type="text" name="username" size="50" />
+            <span class="required">Password:</span> <input type="text" name="passwd" size="20" />
+            <br />
+	    Allowed to change password: <input type="checkbox" value="1" name="password_change" /><br />
+            Post: <input type="checkbox" value="1" name="post" /><br />
+            Moderator: <input type="checkbox" value="1" name="moderator" /><br />
+	    Landmarks: <input type="checkbox" value="1" name="landmarks" /><br />
+            Admin: <input type="checkbox" value="1" name="admin" />
+            <br />
+            <input type="submit" value="Add User" /><span class="required">Required Field</span>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Name</td>
+                    <td>Password</td>
+		    <td>Password Change Allowed</td>
+                    <td>Post</td>
+                    <td>Moderator</td>
+		    <td>Landmarks</td>
+                    <td>Admin</td>        
+                </tr>
+            </thead>
+            <tr tal:repeat="user users">
+                <form action="user.pl">
+                <td>
+                    <input type="hidden" name="userid" tal:attributes="value user/userid" />
+                    <input type="submit" name="action" value="delete" />
+                </td>
+                <td>
+                    <input type="submit" name="action" value="update" />
+                </td>
+                <td>
+                    <input type="text" name="username" size="40" tal:attributes="value user/username" />
+                </td>
+                <td>
+                    <input type="text" name="passwd" size="20" />
+                </td>
+		 <td>
+                    <input tal:condition="true:user/password_change" type="checkbox" name="password_change" value="1" checked="checked" />
+                    <input tal:condition="false:user/password_change" type="checkbox" name="password_change" value="1" />
+                </td>
+                <td>
+                    <input tal:condition="true:user/post" type="checkbox" name="post" value="1" checked="checked" />
+                    <input tal:condition="false:user/post" type="checkbox" name="post" value="1" />
+                </td>
+                <td>
+                    <input tal:condition="true:user/moderator" type="checkbox" name="moderator" value="1" checked="checked" />
+                    <input tal:condition="false:user/moderator" type="checkbox" name="moderator" value="1" />
+                </td>
+		<td>
+                    <input tal:condition="true:user/landmarks" type="checkbox" name="landmarks" value="1" checked="checked" />
+                    <input tal:condition="false:user/landmarks" type="checkbox" name="landmarks" value="1" />
+                </td>
+                <td>
+                    <input tal:condition="true:user/admin" type="checkbox" name="admin" value="1" checked="checked" />
+                    <input tal:condition="false:user/admin" type="checkbox" name="admin" value="1" />
+                </td>
+                </form>
+            </tr>
+        </table>
+    </div>
+  </body>
+</html>

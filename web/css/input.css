@@ -1,0 +1,34 @@
+div#form {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+div#notification{
+    margin-left: 20px;
+    color: red;
+    width:100%;
+}
+#close{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: red;
+    border: 1px solid #000000;
+    background: #90ee90
+}
+#close a{
+    text-decoration:none;
+    color: black;
+}
+table{
+    border-collapse:collapse;
+}
+table, td, th{
+    border:1px solid black;
+}
+.required{
+    font-style:italic;
+}
+
+img{
+    border-style: none;
+}

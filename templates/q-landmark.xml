@@ -1,0 +1,5 @@
+<xml xmlns:tal="http://purl.org/petal/1.0/">
+<markers>
+<marker tal:repeat="landmark landmarks" tal:attributes="name landmark/name; latitude landmark/latitude; longitude landmark/longitude; notes landmark/notes; id landmark/id" />
+</markers>
+</xml>

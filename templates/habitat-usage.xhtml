@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Habitat Use Report</title>
+    <link rel="stylesheet" type="text/css" href="css/habitat-usage.css" />
+  </head>
+  <body>
+    <div class="error" tal:content="error_message"></div>
+    <div class="message" tal:content="message"></div>
+    <div class="report" tal:repeat="report reports">
+        <h4>Report for <span tal:replace="report/species" /> within <span tal:replace="distance" /> <span tal:replace="distance_unit" /> of location
+        <span tal:condition="true:report/location_name" tal:replace="report/location_name" /> 
+        <span tal:replace="report/location" /></h4>
+        <span class="message" tal:condition="true:report/warn" tal:content="report/warn"></span> 
+        <div tal:replace="structure report/html"> </div>
+        <img tal:condition="true:report/graph_url" tal:attributes="src report/graph_url" />
+    </div>
+    <br />
+    Report generated <span tal:replace="report_date" />
+  </body>
+</html>

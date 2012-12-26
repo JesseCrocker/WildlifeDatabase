@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2" xmlns:tal="http://purl.org/petal/1.0/">
+  <Document>
+    <Schema name="" id="sightingId">
+      <SimpleField type="string" name="species">
+	<displayName><b>Species</b></displayName>
+      </SimpleField>
+      <SimpleField type="string" name="date">
+	<displayName><b>Date</b></displayName>
+      </SimpleField>
+      <SimpleField type="string" name="activity">
+	<displayName><b>Activity</b></displayName>
+      </SimpleField>
+      <SimpleField type="string" name="notes">
+	<displayName><b>Notes</b></displayName>
+      </SimpleField>
+      <SimpleField type="string" name="date_end">
+	<displayName><b>End Date</b></displayName>
+      </SimpleField>
+      <SimpleField type="string" name="image">
+	<displayName><b>Image</b></displayName>
+      </SimpleField>
+      <SimpleField type="string" name="username">
+	<displayName><b>Reported By</b></displayName>
+      </SimpleField>
+      <SimpleField tal:repeat="field count_fields" tal:attributes="name field" type="int">
+	<displayName><b tal:content="field"></b></displayName>
+      </SimpleField>
+    </Schema>
+    <Style id="bstyle">
+
+    </Style>
+    <name tal:content="name">wildlife db results</name>
+    <Folder tal:repeat="set sighting_sets">
+      <name tal:content="set/set_name"></name>
+      <Placemark tal:repeat="sighting set/sightings">
+	<name tal:content="sighting/caption"></name>
+	<ExtendedData>
+	  <SchemaData schemaUrl="#sightingId">         
+	    <SimpleData name="species" tal:content="sighting/species"></SimpleData>
+	    <SimpleData name="activity" tal:content="sighting/activity"></SimpleData>
+	    <SimpleData name="date" tal:content="sighting/date"></SimpleData>
+	    <SimpleData name="date_end" tal:content="sighting/date_end"></SimpleData>
+	    <SimpleData tal:condition="true:user/loggedIn" name="username" tal:content="sighting/username"></SimpleData>
+	    <foo tal:omit-tag="" tal:repeat="count sighting/counts"><SimpleData tal:condition="true:count/value" tal:attributes="name count/name" tal:content="count/value"></SimpleData></foo>
+	    <SimpleData name="notes" tal:content="sighting/notes"></SimpleData>
+	  </SchemaData>
+	</ExtendedData>
+	<Point>
+	  <coordinates>
+	    <foo tal:replace="sighting/longitude" />,<foo tal:replace="sighting/latitude" />,0
+	  </coordinates>
+	</Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

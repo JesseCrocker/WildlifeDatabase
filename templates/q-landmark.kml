@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2" xmlns:tal="http://purl.org/petal/1.0/">
+  <Document>
+    <Style id="bstyle">
+      <BalloonStyle>
+	<text>
+          $[description]
+      </text>
+      </BalloonStyle>
+    </Style>
+    <name tal:content="name">Landmarks</name>
+      <Placemark tal:repeat="landmark landmarks">
+	<styleUrl>#bstyle</styleUrl>
+	<name tal:content="landmark/name"></name>
+	<description>
+	  <foo tal:replace="landmark/name" />
+	  Notes: <foo tal:replace="landmark/notes" />
+	  </description>
+	<Point>
+	  <coordinates>
+	    <foo tal:replace="landmark/longitude" />,<foo tal:replace="landmark/latitude" />,0
+	  </coordinates>
+	</Point>
+      </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Edit Parcel</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+  </head>
+  <body>
+    <div id='close'><a href="javascript:parent.closeFrame()">X</a></div>
+    <div id="notification" tal:content="notification"></div>
+    <div id="form" tal:condition="true:parcel">
+      <h1 tal:condition="true:edit">Edit Parcel</h1>
+      <form name="addlayer" action="parcel.pl" method="post">
+	<input type="hidden" name="action" value="update" />
+	<input type="hidden" name="ParcelID" tal:attributes="value parcel/ParcelID" />
+	Owner Name:<input type="text" name="owner_name" tal:attributes="value parcel/owner_name" size="80" /><br />
+	care of:<input type="text" name="care_of" tal:attributes="value parcel/care_of" size="80" /><br />
+	Property Address:<input type="text" name="property_address" tal:attributes="value parcel/property_address" size="80" /><br />
+	Acres:<input type="text" name="total_acre" tal:attributes="value parcel/total_acre" size="80" /><br />
+	county:<input type="text" name="county" tal:attributes="value parcel/county" size="80" /><br />
+	mail address:<input type="text" name="mail_addr" tal:attributes="value parcel/mail_addr" size="80" /><br />
+        mail city:<input type="text" name="mail_city" tal:attributes="value parcel/mail_city" size="80" /><br />
+        mail state:<input type="text" name="mail_state" tal:attributes="value parcel/mail_state" size="80" /><br />
+        mail zip:<input type="text" name="mail_zip" tal:attributes="value parcel/mail_zip" size="80" /><br />
+	access:<input type="text" name="access" tal:attributes="value parcel/access" size="80" /><br />
+	legal_desc:<input type="text" name="legal_desc" tal:attributes="value parcel/legal_desc" size="80" /><br />
+	Notes: <input type="text" name="notes" tal:attributes="value parcel/notes" size="80" /><br />
+	Buffalo Friendly: <input tal:condition="true:parcel/buffalo_friendly" type="checkbox" name="buffalo_friendly" value="1" checked="checked" />
+	    <input tal:condition="false:parcel/buffalo_friendly" type="checkbox" name="buffalo_friendly" value="1" />
+	<br />
+	Cows: <input tal:condition="true:parcel/cows" type="checkbox" name="cows" value="1" checked="checked" />
+	    <input tal:condition="false:parcel/cows" type="checkbox" name="cows" value="1" />
+	<br/><br />
+	Owner Code:<input type="text" name="owner_code" tal:attributes="value parcel/owner_code" /><br />
+	Date Modified:<input type="text" name="date_mod" tal:attributes="value parcel/date_mod" /><br />
+	Source:<input type="text" name="source" tal:attributes="value parcel/source" size="80" /><br />
+    mapper:<input type="text" name="mapper" tal:attributes="value parcel/mapper" size="80" /><br />
+    county_code:<input type="text" name="county_code" tal:attributes="value parcel/county_code" size="80" /><br />
+    gis_acre:<input type="text" name="gis_acre" tal:attributes="value parcel/gis_acre" size="80" /><br />
+    township:<input type="text" name="township" tal:attributes="value parcel/township" size="80" /><br />
+    source_desc:<input type="text" name="source_desc" tal:attributes="value parcel/source_desc" size="80" /><br />
+    mapper_desc:<input type="text" name="mapper_desc" tal:attributes="value parcel/mapper_desc" size="80" /><br />
+    doing_business:<input type="text" name="doing_business" tal:attributes="value parcel/doing_business" size="80" /><br />
+	<input tal:condition="true:edit" type="submit" value="Update" />
+      </form>
+    </div>
+  </body>
+</html>

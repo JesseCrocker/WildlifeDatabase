@@ -1,0 +1,16 @@
+div.error {
+	color:red;
+}
+table {
+	border-collapse: collapse;
+}
+td {
+	border: 1px solid #aaaaaa;
+	padding: 6px;
+	text-align: left;
+}
+th {
+	border: 1px solid #aaaaaa;
+	padding: 6px;
+	text-align: left;
+}

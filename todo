@@ -1,0 +1,25 @@
+todo:
+make anonymous exlucde stored in db
+reverse date range if it is backwards
+it is not possible to update a field in a sighting to a null value(HMM?)
+landmark page doesnt show images in table:
+    <td><a tal:condition="true landmark/image" tal:attributes="href landmark/image" target="_blank" >Photo</a></td>
+    throws an error
+    landmark image uploading doesnt work
+    	Photo:<input type="file" name="uploaded_file"  size="50"/><br />
+	
+qs.pl:
+move get_before_date to WildlifeDB.pm
+
+maybe:
+start using mysql gis types, this will make spatial queries easier
+auto setup: if text config with sql info doest exist start up with a page asking for it, then make the sql tables, then go into config.  should be able to go from nothing to running in 30 minutes
+
+distance measuring doesnt work in old firefox or new chrome
+Show current location on phone?
+make close link not show on phone when submenu not open
+Set time to current on mobile 
+navigator.geolocation.getCurrentPosition
+
+todo:
+eagle creek mile markers

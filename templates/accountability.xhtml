@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+  </head>
+  <body>
+    <div id="notification" tal:content="notification"></div>
+    <div tal:repeat="report reports">
+    <h3 tal:content="report/name"></h3>
+    <table tal:condition="true:report/data/0">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line report/data">
+            <td tal:content="line/username"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+    <span tal:condition="false:report/data/0">No Sightings</span>
+  </div>
+    <br />
+  <div>
+    Report generated <span tal:replace="report_date" />
+  </div>
+  </body>
+</html>

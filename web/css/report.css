@@ -1,0 +1,22 @@
+table {
+	border-collapse: collapse;
+}
+td {
+	border: 1px solid #aaaaaa;
+	padding: 6px;
+	text-align: left;
+}
+th {
+	border: 1px solid #aaaaaa;
+	padding: 6px;
+	text-align: left;
+	text-decoration: none;
+	color: black;
+}
+img {
+	border: 0;
+}
+a {
+	text-decoration: none;
+	color: black;
+}

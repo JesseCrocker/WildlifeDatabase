@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2" xmlns:tal="http://purl.org/petal/1.0/">
+  <Document>
+    <Style id="pstyle">
+      <LineStyle><color>ff000000</color></LineStyle><PolyStyle><color>440000ff</color><fill>1</fill></PolyStyle>
+    </Style>
+    <Style id="friendly">
+      <LineStyle><color>ff000000</color></LineStyle><PolyStyle><color>4400ff00</color><fill>1</fill></PolyStyle>
+    </Style>
+    <name>Montana Property</name>
+    <Folder>
+      <name>Montana Property</name>
+      <Placemark tal:repeat="parcel parcels">
+	<styleUrl tal:condition="true:parcel/data/buffalo_friendly">#friendly</styleUrl>
+	<styleUrl tal:condition="false:parcel/data/buffalo_friendly">#pstyle</styleUrl>
+	<name tal:content="parcel/data/owner_name"></name>
+	<Polygon>
+	  <outerBoundaryIs>
+	    <LinearRing>
+	      <coordinates tal:content="parcel/coord_string"></coordinates>
+	    </LinearRing>
+	  </outerBoundaryIs>
+	</Polygon>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

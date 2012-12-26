@@ -1,0 +1,19 @@
+<xml xmlns:tal="http://purl.org/petal/1.0/">
+<Folder tal:omit-tag="" 
+tal:repeat="set sighting_sets">
+<foo tal:condition="true:user/loggedIn" tal:omit-tag="">
+    <marker tal:repeat="sighting set/sightings" tal:attributes="species sighting/species; latitude sighting/latitude; longitude sighting/longitude; latitude_end sighting/latitude_end; longitude_end sighting/longitude_end; date sighting/date; date_end sighting/date_end; activity sighting/activity; notes sighting/notes; caption sighting/caption; username sighting/username; update_link sighting/update_link; delete_link sighting/delete_link; image sighting/image; image_height sighting/image_height; image_width sighting/image_width">
+      <foo tal:repeat="count sighting/counts" tal:omit-tag="">
+    <count tal:attributes="name count/name" tal:content="count/value"></count>
+    </foo>
+    </marker>
+</foo>
+<foo tal:condition="false:user/loggedIn" tal:omit-tag="">
+    <marker tal:repeat="sighting set/sightings" tal:attributes="species sighting/species; latitude sighting/latitude; longitude sighting/longitude; latitude_end sighting/latitude_end; longitude_end sighting/longitude_end; date sighting/date; date_end sighting/date_end; activity sighting/activity; notes sighting/notes; caption sighting/caption; image sighting/image; image_height sighting/image_height; image_width sighting/image_width">
+      <foo tal:repeat="count sighting/counts" tal:omit-tag="">
+    <count tal:attributes="name count/name" tal:content="count/value"></count>
+    </foo>
+    </marker>
+</foo>
+</folder>
+</xml>

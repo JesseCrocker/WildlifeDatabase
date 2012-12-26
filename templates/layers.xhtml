@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+  </head>
+  <body>
+    <div id='close'><a href="javascript:parent.closeFrame()">X</a></div>
+    <div id="notification" tal:content="notification"></div>
+    <div id="form">
+      <h1>Add new Data layer</h1>
+      <form name="addlayer" action="layers.pl" method="post">
+	<input type="hidden" name="action" value="new" />
+	<span class='required'>Layer name</span>: <input type="text" size="50" name="name" /><br />
+	<span class='required'>Url to kml or kmz file</span>: <input type="text" name="url" size="100" /><br />
+	Visible by default: <input type="checkbox" name="visible" value="1" />
+	<br />
+	Dynamically generated: <input type="checkbox" name="cgi" value="1" />
+	<br />
+	<input type="submit" value="add layer" /><span class="required">Required Field</span>
+      </form>
+      <table>
+	<thead>
+	  <tr>
+	    <td></td>
+	    <td></td>
+	    <td>Layer Name</td>
+	    <td>Url to KML file</td>
+	    <td>Visisble</td>
+	    <td>Dynamic</td>
+	  </tr>
+	</thead>
+	<tr tal:repeat="layer layers">
+	  <form action="layers.pl">
+	  <td>
+	    <input type="hidden" name="id" tal:attributes="value layer/id" />
+	    <input type="submit" name="action" value="delete" />
+	  </td>
+	  <td><input type="submit" name="action" value="update" /></td>
+	  <td><input type="text" name="name" tal:attributes="value layer/name" size="30" /></td>
+	  <td><input type="text" name="url" size="70" tal:attributes="value layer/url" /></td>
+	  <td>
+	    <input tal:condition="true:layer/visible" type="checkbox" name="visible" value="1" checked="checked" />
+	    <input tal:condition="false:layer/visible" type="checkbox" name="visible" value="1" />
+	  </td>
+	  <td>
+	    <input tal:condition="true:layer/cgi" type="checkbox" name="cgi" value="1" checked="checked" />
+	    <input tal:condition="false:layer/cgi" type="checkbox" name="cgi" value="1" />
+	  </td>
+	  </form>
+	</tr>
+      </table>
+    </div>
+  </body>
+</html>

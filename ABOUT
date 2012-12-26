@@ -1,0 +1,20 @@
+All files, with the exception of wms236.js(borrowed from backcountry maps.com), are license under the Affero General Public License(see the LICENSE file).
+
+jsprogress bar from http://www.bram.us/projects/js_bramus/jsprogressbarhandler/
+
+
+Requires perl, apache, mysql and the following perl modules:
+Date::EzDate
+CGI::Session::Auth
+CGI::Session::Auth::DBI
+DBI
+CGI
+Image::Magick
+CGI::Carp
+HTML::Entities
+Math::Round
+GD::Graph;
+GD::Graph::bars;
+Digest::MD5
+Petal
+Petal::Utils

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+    <script type="text/javascript">
+        function set_start_loc(latlon){
+            var ss = latlon.toString().match(/[\d\.\-]+/g)
+            document.conf.latitude.value = ss[0];
+            document.conf.longitude.value = ss[1];
+        }
+    </script>
+  </head>
+  <body onload="parent.clear_click_markers()">
+    <div id='close'><a href="javascript:parent.closeFrame()">X</a></div>
+    <h1>Wildlife DB setup</h1>
+    <div id="form">
+    Fields mark with an * are required
+    <form method="post" name="conf" id="conf">
+      <ul>
+	<li><h2>Map View</h2></li>
+	<li>Default Location * <input type="text" id="latitude" size="11" name="conf default latitude" tal:attributes="value wd/conf 'default latitude'" />,<input type="text" size="11" id="longitude" name="conf default longitude" tal:attributes="value wd/conf 'default longitude'" /></li>
+	<li>Default zoom level * <input type="text" size="2" name="conf default zoom" tal:attributes="value wd/conf 'default zoom'" /></li>
+	<li>Default Species <input type="text" size="20" name="conf default species" tal:attributes="value wd/conf 'default species'" /></li>
+	<li>Default "Max Sightings on Map" <input type="text" size="4" name="conf max sightings on map" tal:attributes="value wd/conf 'max sightings on map'" /></li>
+	<li>Default "Max Sightings per query" <input type="text" size="4" name="conf max sightings per query" tal:attributes="value wd/conf 'max sightings per query'" /></li>
+	<li>Default "Show Sightings within x Miles" <input type="text" size="4" name="conf sighting_distance" tal:attributes="value wd/conf 'sighting_distance'" /></li>
+	<li><h2>Reporting Sightings</h2></li>
+	<li>Count Fields, seperated by commas* <input type="text" size="80" name="conf count_fields" tal:attributes="value wd/conf 'count_fields'" /></li>
+	<li>Timezone * <input type="text" size="20" name="conf timezone" tal:attributes="value wd/conf 'timezone'" /></li>
+	<li>First year to report sightings for * <input type="text" size="20" name="conf first year" tal:attributes="value wd/conf 'first year'" /></li>
+	<li>Show a warning if the hour of a sighting is before <input type="text" size="1" name="conf time warning" tal:attributes="value wd/conf 'time warning'" />(enter 0 to not show a warning)</li>
+	<li><h2>URIs</h2></li>
+	<li>Base URI * <input type="text" size="100" name="conf base url" tal:attributes="value wd/conf 'base url'" /></li>
+	<li>Icon URI * <input type="text" size="100" name="conf icon uri" tal:attributes="value wd/conf 'icon uri'" /></li>
+	<li><h2>Directorys</h2></li>
+	<li>temp Directory * <input type="text" size="100" name="conf tempdir" tal:attributes="value wd/conf 'tempdir'" /></li>
+	<li>Base Directory(all the following directories are relative to this one)
+	  <input type="text" size="100" name="conf base dir" tal:attributes="value wd/conf 'base dir'" /></li>
+	<li>Template Directory * <input type="text" size="100" name="conf template dir" tal:attributes="value wd/conf 'template dir'" /></li>
+	<li>Backup Directory * <input type="text" size="100" name="conf backup dir" tal:attributes="value wd/conf 'backup dir'" /></li>
+	<li><h2>Image uploading</h2></li>
+	<li>Uploaded Image Directory * <input type="text" size="100" name="conf image dir" tal:attributes="value wd/conf 'image dir'" /></li>
+	<li>URI path for uploaded images * <input type="text" size="100" name="conf image uri" tal:attributes="value wd/conf 'image uri'" /></li>
+	<li>Max Image size, largest dimension * <input type="text" size="4" name="conf max image size" tal:attributes="value wd/conf 'max image size'" />Pixels</li>
+	<li><h2>Graphs</h2></li>
+	<li>Graph Size *<input type="text" size="4" name="conf graph size x" tal:attributes="value wd/conf 'graph size x'" /> x
+	<input type="text" size="4" name="conf graph size y" tal:attributes="value wd/conf 'graph size y'" /> pixels</li>
+	<li>Graph Directory <input type="text" size="100" name="conf graph_dir" tal:attributes="value wd/conf 'graph_dir'" /></li>
+	<li>URI path for graph directory <input type="text" size="100" name="conf graph_web_dir" tal:attributes="value wd/conf 'graph_web_dir'" /></li>
+
+      </ul>
+      <input type="submit" value="Update settings" />
+    </form>
+    </div>
+  </body>
+</html>

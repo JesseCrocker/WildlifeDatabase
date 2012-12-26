@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html
+	  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://purl.org/petal/1.0/" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+  <head>
+    <title>Wildlife Database</title>
+    <link rel="stylesheet" type="text/css" href="css/input.css" />
+  </head>
+  <body>
+    <div id="notification" tal:content="notification"></div>
+    <div id="report">
+    <h3>Reports By User - last 30 days</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line user_report_30/data">
+            <td tal:content="line/username"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+    
+    <h3>Reports By Species - last 30 days</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Species</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line species_report_30/data">
+            <td tal:content="line/species"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+    
+    <h3>Reports By User - last 90 days</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line user_report_90/data">
+            <td tal:content="line/username"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+
+    <h3>Reports By Species - last 90 days</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Species</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line species_report_90/data">
+            <td tal:content="line/species"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+    
+    <h3>All Reports By User</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line user_report/data">
+            <td tal:content="line/username"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+    
+    <h3>All Reports By Species</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Species</td>
+                <td># of Sightings</td>
+            </tr>
+        </thead>
+        <tr tal:repeat="line species_report/data">
+            <td tal:content="line/species"></td>
+            <td tal:content="line/count"></td>
+        </tr>
+    </table>
+    
+  </div>
+  <br />
+  <div>
+    Report generated <span tal:replace="report_date" />
+  </div>
+  </body>
+</html>
